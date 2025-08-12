@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 23:03:13 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/12 23:27:15 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/12 23:35:34 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ int	main(void)
 
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, 1280, 720, "Hello world!");
+	(void)mlx_win;
 	mlx_loop(mlx);
 }
