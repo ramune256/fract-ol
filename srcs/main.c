@@ -6,11 +6,11 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 23:03:13 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/12 23:10:08 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/12 23:24:10 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
+#include "../minilibx-linux/mlx.h"
 
 int	main(void)
 {

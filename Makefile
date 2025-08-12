@@ -6,14 +6,13 @@
 #    By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/12 22:25:44 by shunwata          #+#    #+#              #
-#    Updated: 2025/08/12 22:49:48 by shunwata         ###   ########.fr        #
+#    Updated: 2025/08/12 23:23:54 by shunwata         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I $(INC_DIR) \
-			-I $(LIBFT_DIR)/includes -I $(FT_PRINTF_DIR) -I $(GET_NEXT_LINE_DIR) -I $(MLX_DIR)
+CFLAGS = -Wall -Wextra -Werror -I $(INC_DIR) -I $(LIBFT_DIR)/includes -I $(FT_PRINTF_DIR) -I $(GET_NEXT_LINE_DIR) -I $(MLX_DIR)
 
 SRC_DIR = srcs
 INC_DIR = includes
