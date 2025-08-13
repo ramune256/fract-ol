@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 15:38:43 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/13 18:36:29 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/13 18:47:02 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ typedef struct s_fractal
 
 
 t_complex	map_pixel_to_complex(int x, int y);
+void		render_mandelbrot(t_fractal *f);
 
 #endif
