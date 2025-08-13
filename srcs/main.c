@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 23:03:13 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/13 18:01:09 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/13 18:04:30 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,6 @@ int	main(void)
 	printf("Top-left (0,0) maps to: (%.2f, %.2fi)\n", c1.real, c1.imag);
 	printf("Center (%d,%d) maps to: (%.2f, %.2fi)\n", WIDTH / 2, HEIGHT / 2, c2.real, c2.imag);
 	printf("Bottom-right (%d,%d) maps to: (%.2f, %.2fi)\n", WIDTH - 1, HEIGHT - 1, c3.real, c3.imag);
+
+	return (0);
 }
