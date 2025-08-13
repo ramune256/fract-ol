@@ -6,22 +6,28 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 23:03:13 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/13 18:17:07 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/13 18:43:42 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-#include <stdio.h>
 int	main(void)
 {
-	t_complex	c1 = map_pixel_to_complex(0, 0); // 左上
-	t_complex	c2 = map_pixel_to_complex(WIDTH / 2, HEIGHT / 2); // 中央
-	t_complex	c3 = map_pixel_to_complex(WIDTH - 1, HEIGHT - 1); // 右下
+	t_fractal	f;
 
-	printf("Top-left (0,0) maps to: (%.2f, %.2fi)\n", c1.real, c1.imag);
-	printf("Center (%d,%d) maps to: (%.2f, %.2fi)\n", WIDTH / 2, HEIGHT / 2, c2.real, c2.imag);
-	printf("Bottom-right (%d,%d) maps to: (%.2f, %.2fi)\n", WIDTH - 1, HEIGHT - 1, c3.real, c3.imag);
+	f.mlx_ptr = mlx_init();
+	// ... エラーチェック ...
+	f.win_ptr = mlx_new_window(f.mlx_ptr, WIDTH, HEIGHT, "Mandelbrot Set");
+	// ... エラーチェック ...
 
+	// イメージの作成
+	f.img.img_ptr = mlx_new_image(f.mlx_ptr, WIDTH, HEIGHT);
+	f.img.addr = mlx_get_data_addr(f.img.img_ptr, &f.img.bpp, &f.img.line_len, &f.img.endian);
+
+	// 描画関数の呼び出し
+	render_mandelbrot(&f);
+
+	mlx_loop(f.mlx_ptr);
 	return (0);
 }
