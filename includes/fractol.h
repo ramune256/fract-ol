@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 15:38:43 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/13 18:47:02 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/15 20:34:48 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # define HEIGHT 600
 
 # define MAX_ITERATIONS 100
+
+# define ZOOM_FACTOR 0.9
 
 typedef struct s_complex
 {
@@ -37,6 +39,14 @@ typedef struct s_img
 	int		endian;
 }			t_img;
 
+typedef struct s_range
+{
+	double	min_r;
+	double	max_r;
+	double	min_i;
+	double	max_i;
+}			t_range;
+
 typedef struct s_fractal
 {
 	void	*mlx_ptr;
@@ -45,7 +55,8 @@ typedef struct s_fractal
 }			t_fractal;
 
 
-t_complex	map_pixel_to_complex(int x, int y);
-void		render_mandelbrot(t_fractal *f);
+int 		mouse_hook(int button, int x, int y, t_fractal *f);
+t_complex	map_pixel_to_complex(int x, int y, t_range *range);
+void		render_mandelbrot(t_fractal *f, t_range *range);
 
 #endif

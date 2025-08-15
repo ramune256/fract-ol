@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 18:39:37 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/13 18:40:59 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/15 20:31:20 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	my_pixel_put(t_img *img, int x, int y, int color)
 }
 
 // マンデルブロ集合の計算と描画を行うメイン関数
-void	render_mandelbrot(t_fractal *f)
+void	render_mandelbrot(t_fractal *f, t_range *range)
 {
 	int			x;
 	int			y;
@@ -38,7 +38,7 @@ void	render_mandelbrot(t_fractal *f)
 		x = 0;
 		while (x < WIDTH)
 		{
-			c = map_pixel_to_complex(x, y); // Day 2の関数
+			c = map_pixel_to_complex(x, y, &range); // Day 2の関数
 			z.real = 0;
 			z.imag = 0;
 			i = 0;
