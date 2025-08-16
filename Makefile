@@ -6,13 +6,13 @@
 #    By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/12 22:25:44 by shunwata          #+#    #+#              #
-#    Updated: 2025/08/16 22:48:48 by shunwata         ###   ########.fr        #
+#    Updated: 2025/08/16 23:04:17 by shunwata         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -lm -I $(INC_DIR) \
+CFLAGS = -Wall -Wextra -Werror -I $(INC_DIR) \
 			-I $(LIBFT_DIR)/includes -I $(FT_PRINTF_DIR) -I $(GET_NEXT_LINE_DIR) -I $(MLX_DIR)
 
 SRC_DIR = srcs
@@ -31,10 +31,13 @@ MLX = $(MLX_DIR)/libmlx.a
 MLX_DIR = minilibx-linux
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11
 
+MATH_FLAGS = -lm
+
+
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT) $(MLX)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(MLX) $(MLX_FLAGS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(MLX) $(MLX_FLAGS) $(MATH_FLAGS)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR) bonus
