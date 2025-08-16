@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 15:38:43 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/16 22:06:06 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/16 22:15:02 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ typedef struct s_complex
 	double	imag;
 }			t_complex;
 
+typedef enum e_fractal_type
+{
+	MANDELBROT,
+	JULIA
+}	t_fractal_type;
+
 typedef struct s_img
 {
 	void	*img_ptr;
@@ -41,23 +47,17 @@ typedef struct s_img
 
 typedef struct s_fractal
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_img	img;
-	double	min_r;
-	double	max_r;
-	double	min_i;
-	double	max_i;
+	void			*mlx_ptr;
+	void			*win_ptr;
+	t_img			img;
+	double			min_r;
+	double			max_r;
+	double			min_i;
+	double			max_i;
 	t_fractal_type	type;
-	double		julia_r;
-	double		julia_i;
+	double			julia_r;
+	double			julia_i;
 }			t_fractal;
-
-typedef enum e_fractal_type
-{
-	MANDELBROT,
-	JULIA
-}	t_fractal_type;
 
 int			mouse_hook(int button, int x, int y, t_fractal *f);
 double		ft_atof(const char *str);
