@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 18:39:37 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/15 21:11:40 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/16 20:56:14 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,18 @@ void	render_mandelbrot(t_fractal *f)
 		x = 0;
 		while (x < WIDTH)
 		{
-			c = map_pixel_to_complex(x, y, f); // Day 2の関数
-			z.real = 0;
-			z.imag = 0;
+			if (f->type == JULIA)
+			{
+				z = map_pixel_to_complex(x, y, f);
+				c.real = f->julia_r;
+				c.imag = f->julia_i;
+			}
+			else
+			{
+				z.real = 0;
+				z.imag = 0;
+				c = map_pixel_to_complex(x, y, f);
+			}
 			i = 0;
 			while (i < MAX_ITERATIONS)
 			{
