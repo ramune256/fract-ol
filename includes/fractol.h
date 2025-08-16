@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 15:38:43 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/16 22:15:02 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/16 22:46:52 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ typedef struct s_fractal
 int			mouse_hook(int button, int x, int y, t_fractal *f);
 double		ft_atof(const char *str);
 t_complex	map_pixel_to_complex(int x, int y, t_fractal *f);
-void		render_mandelbrot(t_fractal *f);
+void		render_fractal(t_fractal *f);
 
 #endif

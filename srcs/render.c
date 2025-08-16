@@ -6,13 +6,28 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 18:39:37 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/16 20:56:14 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/16 22:53:22 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-// イメージバッファの指定したピクセルに色を書き込むヘルパー関数
+int	get_color_psychedelic(int i)
+{
+	int		red;
+	int		green;
+	int		blue;
+	double	t;
+
+	if (i == MAX_ITERATIONS)
+		return (0x00000000);
+	t = (double)i / MAX_ITERATIONS;
+	red = (int)(sin(t * 10.0 + 0) * 127 + 128);
+	green = (int)(sin(t * 10.0 + 2) * 127 + 128);
+	blue = (int)(sin(t * 10.0 + 4) * 127 + 128);
+	return ((red << 16) | (green << 8) | blue);
+}
+
 void	my_pixel_put(t_img *img, int x, int y, int color)
 {
 	char	*dst;
@@ -21,8 +36,7 @@ void	my_pixel_put(t_img *img, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-// マンデルブロ集合の計算と描画を行うメイン関数
-void	render_mandelbrot(t_fractal *f)
+void	render_fractal(t_fractal *f)
 {
 	int			x;
 	int			y;
@@ -63,14 +77,10 @@ void	render_mandelbrot(t_fractal *f)
 				z.real = z_real_sq - z_imag_sq + c.real;
 				i++;
 			}
-			if (i == MAX_ITERATIONS)
-				my_pixel_put(&f->img, x, y, 0x00000000); // 集合内部は黒
-			else
-				my_pixel_put(&f->img, x, y, 0x00FFFFFF * (i / (double)MAX_ITERATIONS)); // 外部は白系のグラデーション
+			my_pixel_put(&f->img, x, y, get_color_psychedelic(i));
 			x++;
 		}
 		y++;
 	}
-	// イメージをウィンドウに表示
 	mlx_put_image_to_window(f->mlx_ptr, f->win_ptr, f->img.img_ptr, 0, 0);
 }

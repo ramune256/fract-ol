@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 21:06:16 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/15 21:16:25 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/16 22:47:18 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	mouse_hook(int button, int x, int y, t_fractal *f)
 		f->min_i = mouse_pos.imag - \
 			((double)(HEIGHT - y) / HEIGHT) * range_i;
 		f->max_i = f->min_i + range_i;
-		render_mandelbrot(f);
+		render_fractal(f);
 	}
 	return (0);
 }

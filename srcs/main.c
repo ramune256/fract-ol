@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 23:03:13 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/16 22:36:17 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/16 22:47:11 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int argc, char **argv)
 	else
 		return (write(2, "Usage: ./fractol [mandelbrot | julia]\n", 38), 1);
 	init_fractal(&f);
-	render_mandelbrot(&f);
+	render_fractal(&f);
 	mlx_mouse_hook(f.win_ptr, mouse_hook, &f);
 	mlx_loop(f.mlx_ptr);
 	return (0);
