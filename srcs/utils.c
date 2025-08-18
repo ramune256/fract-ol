@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 15:46:20 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/18 16:10:15 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/18 16:35:43 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,20 @@ int	is_valid_double(char *str)
 	return (has_digit);
 }
 
-void	error_exit(char *message, t_fractal *f)
+int	error_exit(char *message, t_fractal *f)
 {
 	ft_putstr_fd("Error: ", 2);
 	ft_putendl_fd(message, 2);
 	cleanup(f);
 	exit(EXIT_FAILURE);
+	return (0);
 }
 
-void	success_exit(t_fractal *f)
+int	success_exit(t_fractal *f)
 {
 	cleanup(f);
 	exit(EXIT_SUCCESS);
+	return (1);
 }
 
 void	cleanup(t_fractal *f)
