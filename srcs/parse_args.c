@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 16:15:10 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/18 16:26:08 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/18 16:37:28 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	parse_args(int argc, char **argv, t_fractal *f)
 	}
 	else
 	{
-		ft_putendl_fd("Usage:	./fractol mandelbrot", 2);
-		ft_putendl_fd("			./fractol julia <real_value> <imag_value>", 2);
+		ft_putendl_fd("Usage: ./fractol mandelbrot", 2);
+		ft_putendl_fd("       ./fractol julia <real_value> <imag_value>", 2);
 		return (0);
 	}
 	return (1);

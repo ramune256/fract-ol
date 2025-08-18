@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 23:03:13 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/18 16:26:38 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/18 16:45:01 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_fractal	f;
 
+	ft_bzero(&f, sizeof(t_fractal));
 	if(!(parse_args(argc, argv, &f)))
 		return (1);
 	init_fractal(&f);
@@ -24,6 +25,5 @@ int	main(int argc, char **argv)
 	mlx_key_hook(f.win_ptr, key_hook, &f);
 	mlx_hook(f.win_ptr, 17, 0, success_exit, &f);
 	mlx_loop(f.mlx_ptr);
-	success_exit(&f);
 	return (0);
 }

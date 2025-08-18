@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 15:46:20 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/18 16:35:43 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/18 16:42:08 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void	cleanup(t_fractal *f)
 
 void	init_fractal(t_fractal *f)
 {
-	ft_bzero(&f, sizeof(t_fractal));
 	f->min_r = -2.0;
 	f->max_r = 2.0;
 	f->min_i = -2.0;
