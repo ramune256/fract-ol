@@ -6,13 +6,13 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 15:25:43 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/13 18:12:20 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/18 15:50:53 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*free_and_null(char *text, char *buffer)
+static char	*free_and_null(char *text, char *buffer)
 {
 	if (text)
 		free(text);
@@ -24,7 +24,7 @@ char	*free_and_null(char *text, char *buffer)
 	return (NULL);
 }
 
-char	*extract_line(char *text)
+static char	*extract_line(char *text)
 {
 	char	*result;
 	int		len;
@@ -49,7 +49,7 @@ char	*extract_line(char *text)
 	return (result);
 }
 
-char	*update_saved(char *text)
+static char	*update_saved(char *text)
 {
 	char	*new_saved;
 	char	*text_ptr;
@@ -74,7 +74,7 @@ char	*update_saved(char *text)
 	return (new_saved);
 }
 
-char	*add_text(int fd, char *saved_text)
+static char	*add_text(int fd, char *saved_text)
 {
 	char	*buffer;
 	char	*temp;

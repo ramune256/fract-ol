@@ -6,11 +6,11 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 20:56:52 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/16 22:00:18 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/18 15:48:41 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-double	process_fractional_part(const char *str)
+static double	process_fractional_part(const char *str)
 {
 	double	fractional_part;
 	double	divisor;
