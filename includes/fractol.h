@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 15:38:43 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/19 14:16:27 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/19 14:47:37 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,19 @@
 
 # include "mlx.h"
 # include "libft.h"
+# include <stdlib.h>
 # include <math.h>
 
 # define WIDTH 800
 # define HEIGHT 600
 
-# define MAX_ITERATIONS 100
+# define INITIAL_ITERATIONS 10
+# define ITERATION_STEP 100
+# define MAX_ITERATIONS 300
+
 # define ZOOM_FACTOR 0.9
+
 # define PIXELS_PER_FRAME 1000
-# define INITIAL_ITERATIONS 50
-# define ITERATION_STEP 10
 
 # define KEY_ESC 65307
 # define KEY_SPACE 32

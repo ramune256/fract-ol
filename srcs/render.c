@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 18:39:37 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/19 14:22:54 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/19 14:27:46 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,56 +35,6 @@ void	my_pixel_put(t_img *img, int x, int y, int color)
 	dst = img->addr + (y * img->line_len + x * (img->bpp / 8));
 	*(unsigned int*)dst = color;
 }
-
-// void	render_fractal(t_fractal *f)
-// {
-// 	int			x;
-// 	int			y;
-// 	t_complex	c;
-// 	t_complex	z;
-// 	int			i;
-// 	double		z_real_sq;
-// 	double		z_imag_sq;
-
-// 	y = 0;
-// 	while (y < HEIGHT)
-// 	{
-// 		x = 0;
-// 		while (x < WIDTH)
-// 		{
-// 			if (f->type == JULIA)
-// 			{
-// 				z = map_pixel_to_complex(x, y, f);
-// 				c.real = f->julia_r;
-// 				c.imag = f->julia_i;
-// 			}
-// 			else
-// 			{
-// 				z.real = 0;
-// 				z.imag = 0;
-// 				c = map_pixel_to_complex(x, y, f);
-// 			}
-// 			i = 0;
-// 			while (i < MAX_ITERATIONS)
-// 			{
-// 				z_real_sq = z.real * z.real;
-// 				z_imag_sq = z.imag * z.imag;
-// 				// |Z|^2 > 4 かチェック
-// 				if (z_real_sq + z_imag_sq > 4.0)
-// 					break;
-// 				// Z = Z^2 + C
-// 				z.imag = 2 * z.real * z.imag + c.imag;
-// 				z.real = z_real_sq - z_imag_sq + c.real;
-// 				i++;
-// 			}
-// 			my_pixel_put(&f->img, x, y, get_color_psychedelic(i, f->current_iterations));
-// 			f->pixels_drawn_this_frame++;
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// 	mlx_put_image_to_window(f->mlx_ptr, f->win_ptr, f->img.img_ptr, 0, 0);
-// }
 
 void	render_fractal_optimized(t_fractal *f)
 {
