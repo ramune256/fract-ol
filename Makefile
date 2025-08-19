@@ -6,7 +6,7 @@
 #    By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/12 22:25:44 by shunwata          #+#    #+#              #
-#    Updated: 2025/08/19 13:23:29 by shunwata         ###   ########.fr        #
+#    Updated: 2025/08/19 14:06:54 by shunwata         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS = -Wall -Wextra -Werror -O2 -I $(INC_DIR) \
 SRC_DIR = srcs
 INC_DIR = includes
 
-SRC = $(addprefix $(SRC_DIR)/, events.c ft_atof.c loop_hook.c main.c map.c parse_args.c render.c utils.c)
+SRC = $(addprefix $(SRC_DIR)/, events.c ft_atof.c main.c map.c parse_args.c render.c utils.c)
 OBJ = $(SRC:.c=.o)
 
 LIBFT = $(LIBFT_DIR)/libft.a
