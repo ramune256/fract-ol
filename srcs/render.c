@@ -6,22 +6,22 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 18:39:37 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/19 14:27:46 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/19 15:11:24 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	get_color_psychedelic(int i)
+int	get_color_psychedelic(int i, int current_iter)
 {
 	int		red;
 	int		green;
 	int		blue;
 	double	t;
 
-	if (i == MAX_ITERATIONS)
+	if (i == current_iter)
 		return (0x00000000);
-	t = (double)i / MAX_ITERATIONS;
+	t = (double)i / current_iter;
 	red = (int)(sin(t * 10.0 + 0) * 127 + 128);
 	green = (int)(sin(t * 10.0 + 2) * 127 + 128);
 	blue = (int)(sin(t * 10.0 + 4) * 127 + 128);
@@ -77,7 +77,7 @@ void	render_fractal_optimized(t_fractal *f)
 				z.real = z_real_sq - z_imag_sq + c.real;
 				i++;
 			}
-			my_pixel_put(&f->img, x, y, get_color_psychedelic(i));
+			my_pixel_put(&f->img, x, y, get_color_psychedelic(i, f->current_iterations));
 			x++;
 		}
 		x = 0;
