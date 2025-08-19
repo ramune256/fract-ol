@@ -6,19 +6,19 @@
 #    By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/12 22:25:44 by shunwata          #+#    #+#              #
-#    Updated: 2025/08/18 16:33:23 by shunwata         ###   ########.fr        #
+#    Updated: 2025/08/19 13:23:29 by shunwata         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I $(INC_DIR) \
+CFLAGS = -Wall -Wextra -Werror -O2 -I $(INC_DIR) \
 			-I $(LIBFT_DIR)/includes -I $(FT_PRINTF_DIR) -I $(GET_NEXT_LINE_DIR) -I $(MLX_DIR)
 
 SRC_DIR = srcs
 INC_DIR = includes
 
-SRC = $(addprefix $(SRC_DIR)/, events.c ft_atof.c main.c map.c parse_args.c render.c utils.c)
+SRC = $(addprefix $(SRC_DIR)/, events.c ft_atof.c loop_hook.c main.c map.c parse_args.c render.c utils.c)
 OBJ = $(SRC:.c=.o)
 
 LIBFT = $(LIBFT_DIR)/libft.a

@@ -6,22 +6,22 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 18:39:37 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/16 22:53:22 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/19 13:32:54 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	get_color_psychedelic(int i)
+int	get_color_psychedelic(int i, int max_iter)
 {
 	int		red;
 	int		green;
 	int		blue;
 	double	t;
 
-	if (i == MAX_ITERATIONS)
+	if (i == max_iter)
 		return (0x00000000);
-	t = (double)i / MAX_ITERATIONS;
+	t = (double)i / max_iter;
 	red = (int)(sin(t * 10.0 + 0) * 127 + 128);
 	green = (int)(sin(t * 10.0 + 2) * 127 + 128);
 	blue = (int)(sin(t * 10.0 + 4) * 127 + 128);
@@ -77,10 +77,90 @@ void	render_fractal(t_fractal *f)
 				z.real = z_real_sq - z_imag_sq + c.real;
 				i++;
 			}
-			my_pixel_put(&f->img, x, y, get_color_psychedelic(i));
+			my_pixel_put(&f->img, x, y, get_color_psychedelic(i, f->current_iterations));
+			f->pixels_drawn_this_frame++;
 			x++;
 		}
 		y++;
 	}
 	mlx_put_image_to_window(f->mlx_ptr, f->win_ptr, f->img.img_ptr, 0, 0);
+}
+
+int	should_stop_rendering(t_fractal *f)
+{
+	return (f->pixels_drawn_this_frame >= PIXELS_PER_FRAME);
+}
+
+void	render_fractal_optimized(t_fractal *f)
+{
+	static int	x = 0;
+	static int	y = 0;
+	t_complex	c;
+	t_complex	z;
+	int			i;
+	double		z_real_sq;
+	double		z_imag_sq;
+
+	if (x == 0 && y == 0)
+		f->pixels_drawn_this_frame = 0;
+
+	while (y < HEIGHT)
+	{
+		while (x < WIDTH)
+		{
+			if (should_stop_rendering(f))
+			{
+				return;
+			}
+
+			if (f->type == JULIA)
+			{
+				z = map_pixel_to_complex(x, y, f);
+				c.real = f->julia_r;
+				c.imag = f->julia_i;
+			}
+			else
+			{
+				z.real = 0;
+				z.imag = 0;
+				c = map_pixel_to_complex(x, y, f);
+			}
+
+			i = 0;
+			while (i < f->current_iterations)
+			{
+				z_real_sq = z.real * z.real;
+				z_imag_sq = z.imag * z.imag;
+				if (z_real_sq + z_imag_sq > 4.0)
+					break;
+				z.imag = 2 * z.real * z.imag + c.imag;
+				z.real = z_real_sq - z_imag_sq + c.real;
+				i++;
+			}
+			my_pixel_put(&f->img, x, y, get_color_psychedelic(i, MAX_ITERATIONS));
+			x++;
+		}
+		x = 0;
+		y++;
+	}
+
+	// 全ピクセルの描画が完了した場合
+	if (y >= HEIGHT)
+	{
+		mlx_put_image_to_window(f->mlx_ptr, f->win_ptr, f->img.img_ptr, 0, 0);
+		y = 0;
+		x = 0;
+
+		// 次の反復回数で再描画する必要があるかチェック
+		if (f->current_iterations < f->max_iterations)
+		{
+			f->current_iterations += ITERATION_STEP;
+			if (f->current_iterations > f->max_iterations)
+				f->current_iterations = f->max_iterations;
+		}
+		else
+		{
+			f->needs_redraw = 0;
+		}
+	}
 }

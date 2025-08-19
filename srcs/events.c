@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 21:06:16 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/18 16:10:23 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/19 13:23:29 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ int	mouse_hook(int button, int x, int y, t_fractal *f)
 		f->min_i = mouse_pos.imag - \
 			((double)(HEIGHT - y) / HEIGHT) * range_i;
 		f->max_i = f->min_i + range_i;
-		render_fractal(f);
+
+		// 再描画フラグを設定
+		f->needs_redraw = 1;
+		f->current_iterations = INITIAL_ITERATIONS;
 	}
 	return (0);
 }
@@ -42,5 +45,21 @@ int	key_hook(int keycode, t_fractal *f)
 {
 	if (keycode == KEY_ESC)
 		success_exit(f);
+	else if (keycode == KEY_SPACE)
+	{
+		// スペースキーで再描画
+		f->needs_redraw = 1;
+		f->current_iterations = INITIAL_ITERATIONS;
+	}
+	else if (keycode == KEY_R)
+	{
+		// Rキーでリセット
+		f->min_r = -2.0;
+		f->max_r = 2.0;
+		f->min_i = -2.0;
+		f->max_i = 2.0;
+		f->needs_redraw = 1;
+		f->current_iterations = INITIAL_ITERATIONS;
+	}
 	return (0);
 }

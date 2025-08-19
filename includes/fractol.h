@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 15:38:43 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/18 16:36:04 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/19 13:28:18 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,13 @@
 
 # define MAX_ITERATIONS 100
 # define ZOOM_FACTOR 0.9
+# define PIXELS_PER_FRAME 1000
+# define INITIAL_ITERATIONS 50
+# define ITERATION_STEP 10
 
 # define KEY_ESC 65307
+# define KEY_SPACE 32
+# define KEY_R 114
 
 typedef struct s_complex
 {
@@ -58,6 +63,10 @@ typedef struct s_fractal
 	t_fractal_type	type;
 	double			julia_r;
 	double			julia_i;
+	int				current_iterations;
+	int				max_iterations;
+	int				needs_redraw;
+	int				pixels_drawn_this_frame;
 }			t_fractal;
 
 int			mouse_hook(int button, int x, int y, t_fractal *f);
@@ -72,5 +81,8 @@ int			error_exit(char *message, t_fractal *f);
 int			success_exit(t_fractal *f);
 void		cleanup(t_fractal *f);
 void		init_fractal(t_fractal *f);
+int			loop_hook(t_fractal *f);
+void		render_fractal_optimized(t_fractal *f);
+int			should_stop_rendering(t_fractal *f);
 
 #endif
