@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 15:46:20 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/19 14:16:37 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/20 16:19:33 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void	init_fractal(t_fractal *f)
 	f->max_i = 2.0;
 	f->current_iterations = INITIAL_ITERATIONS;
 	f->needs_redraw = 1;
-	f->pixels_drawn_this_frame = 0;
 	f->mlx_ptr = mlx_init();
 	if (!f->mlx_ptr)
 		error_exit("mlx_init() failed.", f);

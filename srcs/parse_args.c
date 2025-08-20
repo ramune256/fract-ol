@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 16:15:10 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/18 16:37:28 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/20 16:53:30 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 int	parse_args(int argc, char **argv, t_fractal *f)
 {
-	if (argc == 2 && ft_strncmp(argv[1], "mandelbrot", 10) == 0)
+	if (argc == 2 && ft_strncmp(argv[1], "mandelbrot", 10) == 0 \
+			&& ft_strlen(argv[1]) == 10)
 		f->type = MANDELBROT;
-	else if (argc == 4 && ft_strncmp(argv[1], "julia", 5) == 0)
+	else if (argc == 4 && ft_strncmp(argv[1], "julia", 5) == 0 \
+		&& ft_strlen(argv[1]) == 5)
 	{
 		if (!is_valid_double(argv[2]) || !is_valid_double(argv[3]))
 		{
