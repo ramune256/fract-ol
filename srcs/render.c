@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 18:39:37 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/20 16:48:07 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/20 19:24:27 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ int	get_color_psychedelic(int i)
 	return ((red << 16) | (green << 8) | blue);
 }
 
-void	prepare_formula(t_fractal *f, int x, int y, t_complex *c, t_complex *z)
+void	prepare_formula(t_fractal *f, t_pixel *pixel, t_complex *c, t_complex *z)
 {
 	if (f->type == JULIA)
 	{
-		*z = map_pixel_to_complex(x, y, f);
+		*z = map_pixel_to_complex(pixel->x, pixel->y, f);
 		c->real = f->julia_r;
 		c->imag = f->julia_i;
 	}
@@ -40,7 +40,7 @@ void	prepare_formula(t_fractal *f, int x, int y, t_complex *c, t_complex *z)
 	{
 		z->real = 0;
 		z->imag = 0;
-		*c = map_pixel_to_complex(x, y, f);
+		*c = map_pixel_to_complex(pixel->x, pixel->y, f);
 	}
 }
 
@@ -56,7 +56,7 @@ int	iterate_point(t_complex z, t_complex c, int iter)
 		z_real_sq = z.real * z.real;
 		z_imag_sq = z.imag * z.imag;
 		if (z_real_sq + z_imag_sq > 4.0)
-			break;
+			break ;
 		z.imag = 2 * z.real * z.imag + c.imag;
 		z.real = z_real_sq - z_imag_sq + c.real;
 		i++;
@@ -74,24 +74,23 @@ void	get_next_iter(t_fractal *f)
 
 void	render_fractal_optimized(t_fractal *f)
 {
-	int			x;
-	int			y;
+	t_pixel		pixel;
 	t_complex	c;
 	t_complex	z;
 
-	x = 0;
-	y = 0;
-	while (y < HEIGHT)
+	pixel.x = 0;
+	pixel.y = 0;
+	while (pixel.y < HEIGHT)
 	{
-		while (x < WIDTH)
+		while (pixel.x < WIDTH)
 		{
-			prepare_formula(f, x, y, &c, &z);
-			my_pixel_put(&f->img, x, y, get_color_psychedelic(\
+			prepare_formula(f, &pixel, &c, &z);
+			my_pixel_put(&f->img, pixel.x, pixel.y, get_color_psychedelic(\
 				iterate_point(z, c, f->current_iterations)));
-			x++;
+			pixel.x++;
 		}
-		x = 0;
-		y++;
+		pixel.x = 0;
+		pixel.y++;
 	}
 	mlx_put_image_to_window(f->mlx_ptr, f->win_ptr, f->img.img_ptr, 0, 0);
 	if (f->current_iterations < MAX_ITERATIONS)

@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 23:03:13 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/19 13:32:54 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/20 19:07:47 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	t_fractal	f;
 
 	ft_bzero(&f, sizeof(t_fractal));
-	if(!(parse_args(argc, argv, &f)))
+	if (!(parse_args(argc, argv, &f)))
 		return (1);
 	init_fractal(&f);
 	mlx_mouse_hook(f.win_ptr, mouse_hook, &f);

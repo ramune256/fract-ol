@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 15:46:20 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/20 16:19:33 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/20 19:40:14 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ int	error_exit(char *message, t_fractal *f)
 	ft_putendl_fd(message, 2);
 	cleanup(f);
 	exit(EXIT_FAILURE);
-	return (0);
+	return (1);
 }
 
 int	success_exit(t_fractal *f)
 {
 	cleanup(f);
 	exit(EXIT_SUCCESS);
-	return (1);
+	return (0);
 }
 
 void	cleanup(t_fractal *f)

@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 ./fractol mandelbrot
 ./fractol julia 0.285 0.01
 ./fractol julia -0.74543 0.11301

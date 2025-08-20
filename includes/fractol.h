@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 15:38:43 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/20 16:55:58 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/20 19:20:24 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ typedef struct s_complex
 	double	imag;
 }			t_complex;
 
+typedef struct s_pixel
+{
+	int	x;
+	int	y;
+}		t_pixel;
+
 typedef enum e_fractal_type
 {
 	MANDELBROT,
@@ -66,7 +72,7 @@ typedef struct s_fractal
 	double			julia_i;
 	int				current_iterations;
 	int				needs_redraw;
-}			t_fractal;
+}					t_fractal;
 
 int			mouse_hook(int button, int x, int y, t_fractal *f);
 int			key_hook(int keycode, t_fractal *f);
