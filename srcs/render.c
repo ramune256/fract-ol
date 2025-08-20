@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 18:39:37 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/20 19:24:27 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/20 19:49:11 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	get_color_psychedelic(int i)
 	return ((red << 16) | (green << 8) | blue);
 }
 
-void	prepare_formula(t_fractal *f, t_pixel *pixel, t_complex *c, t_complex *z)
+void	prepare_formula(t_fractal *f, t_pix *pixel, t_complex *c, t_complex *z)
 {
 	if (f->type == JULIA)
 	{
@@ -74,7 +74,7 @@ void	get_next_iter(t_fractal *f)
 
 void	render_fractal_optimized(t_fractal *f)
 {
-	t_pixel		pixel;
+	t_pix		pixel;
 	t_complex	c;
 	t_complex	z;
 

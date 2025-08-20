@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 15:38:43 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/20 19:20:24 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/20 19:48:32 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ typedef struct s_complex
 	double	imag;
 }			t_complex;
 
-typedef struct s_pixel
+typedef struct s_pix
 {
 	int	x;
 	int	y;
-}		t_pixel;
+}		t_pix;
 
 typedef enum e_fractal_type
 {
