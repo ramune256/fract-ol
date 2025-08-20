@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 18:39:37 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/20 15:31:25 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/20 15:55:21 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ int	get_color_psychedelic(int i)
 	green = (int)(sin(t * 10.0 + 2) * 127 + 128);
 	blue = (int)(sin(t * 10.0 + 4) * 127 + 128);
 	return ((red << 16) | (green << 8) | blue);
+}
+
+void	init_x_y(int *x, int *y)
+{
+	*x = 0;
+	*y = 0;
 }
 
 void	prepare_formula(t_fractal *f, int x, int y, t_complex *c, t_complex *z)
@@ -92,8 +98,7 @@ void	render_fractal_optimized(t_fractal *f)
 	t_complex	z;
 	int			i;
 
-	if (x == 0 && y == 0)
-		f->pixels_drawn_this_frame = 0;
+	f->pixels_drawn_this_frame = 0;
 	while (y < HEIGHT)
 	{
 		while (x < WIDTH)
@@ -103,16 +108,13 @@ void	render_fractal_optimized(t_fractal *f)
 			prepare_formula(f, x, y, &c, &z);
 			i = iterate_point(z, c, f->current_iterations);
 			my_pixel_put(&f->img, x, y, get_color_psychedelic(i));
+			f->pixels_drawn_this_frame++;
 			x++;
 		}
 		x = 0;
 		y++;
 	}
-	if (y >= HEIGHT)
-	{
-		mlx_put_image_to_window(f->mlx_ptr, f->win_ptr, f->img.img_ptr, 0, 0);
-		y = 0;
-		x = 0;
-		get_next_iter(f);
-	}
+	mlx_put_image_to_window(f->mlx_ptr, f->win_ptr, f->img.img_ptr, 0, 0);
+	init_x_y(&x, &y);
+	get_next_iter(f);
 }
