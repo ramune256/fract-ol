@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 18:39:37 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/20 15:55:21 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/20 16:14:51 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ void	render_fractal_optimized(t_fractal *f)
 	{
 		while (x < WIDTH)
 		{
-			if (f->pixels_drawn_this_frame >= PIXELS_PER_FRAME)
-				return;
+			// if (f->pixels_drawn_this_frame >= PIXELS_PER_FRAME)
+			// 	return;
 			prepare_formula(f, x, y, &c, &z);
 			i = iterate_point(z, c, f->current_iterations);
 			my_pixel_put(&f->img, x, y, get_color_psychedelic(i));
