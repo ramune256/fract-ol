@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 21:06:16 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/19 14:18:13 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/20 14:56:39 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,6 @@ int	key_hook(int keycode, t_fractal *f)
 {
 	if (keycode == KEY_ESC)
 		success_exit(f);
-	// else if (keycode == KEY_SPACE)
-	// {
-	// 	f->needs_redraw = 1;
-	// 	f->current_iterations = INITIAL_ITERATIONS;
-	// }
 	else if (keycode == KEY_R)
 	{
 		f->min_r = -2.0;
