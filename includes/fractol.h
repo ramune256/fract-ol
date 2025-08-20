@@ -6,7 +6,7 @@
 /*   By: shunwata <shunwata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 15:38:43 by shunwata          #+#    #+#             */
-/*   Updated: 2025/08/20 19:48:32 by shunwata         ###   ########.fr       */
+/*   Updated: 2025/08/20 20:24:37 by shunwata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 # define WIDTH 800
 # define HEIGHT 800
 
-# define INITIAL_ITERATIONS 10
+# define INITIAL_ITERATIONS 100
 # define ITERATION_STEP 100
-# define MAX_ITERATIONS 300
+# define MAX_ITERATIONS 500
 
 # define ZOOM_FACTOR 0.9
 
